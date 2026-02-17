@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { FilterSettings, AspectRatio, BlurDirection } from '../types';
+import React, { useState, useEffect } from 'react';
+import { FilterSettings, AspectRatio, BlurDirection } from '../types.ts';
 
 interface ControlPanelProps {
   settings: FilterSettings;
@@ -12,7 +12,6 @@ interface ControlPanelProps {
 const Slider = ({ label, value, min, max, onChange, suffix = '' }: any) => {
   const [localValue, setLocalValue] = useState(value);
 
-  // Sync with prop if it changes externally
   useEffect(() => {
     setLocalValue(value);
   }, [value]);
@@ -59,7 +58,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ settings, onSettingsChange,
       </div>
 
       <div className="space-y-6">
-        {/* Collapsible Base Adjustments */}
         <section className="space-y-3">
           <button 
             onClick={() => setIsAdjustmentsOpen(!isAdjustmentsOpen)}
@@ -78,7 +76,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ settings, onSettingsChange,
           </div>
         </section>
 
-        {/* Pixellation */}
         <section className="space-y-4">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500 border-b border-slate-800 pb-2">2. Pixellate</h3>
           <Slider 
@@ -90,7 +87,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ settings, onSettingsChange,
           />
         </section>
 
-        {/* Blur Direction */}
         <section className="space-y-4">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500 border-b border-slate-800 pb-2">3. Directional Blur</h3>
           <div className="grid grid-cols-3 gap-2">
@@ -110,7 +106,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ settings, onSettingsChange,
           </div>
         </section>
 
-        {/* Finishing */}
         <section className="space-y-4">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500 border-b border-slate-800 pb-2">4. Finish</h3>
           <button
@@ -126,7 +121,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ settings, onSettingsChange,
           </button>
         </section>
 
-        {/* Format */}
         <section className="space-y-4">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500 border-b border-slate-800 pb-2">Canvas Format</h3>
           <div className="grid grid-cols-3 gap-2">

@@ -1,5 +1,5 @@
 
-import { FilterSettings, ASPECT_RATIOS } from '../types';
+import { FilterSettings, ASPECT_RATIOS } from '../types.ts';
 
 /**
  * Calculates the crop dimensions to mimic 'object-fit: cover'

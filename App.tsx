@@ -1,14 +1,14 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { FilterSettings, ASPECT_RATIOS } from './types';
+import { FilterSettings, ASPECT_RATIOS } from './types.ts';
 import { 
   applyPixellation, 
   applyDirectionalBlur, 
   getCoverDimensions, 
   applyAdjustments, 
   applyNoise 
-} from './utils/canvasUtils';
-import ControlPanel from './components/ControlPanel';
+} from './utils/canvasUtils.ts';
+import ControlPanel from './components/ControlPanel.tsx';
 
 const App: React.FC = () => {
   const [image, setImage] = useState<HTMLImageElement | null>(null);
@@ -133,7 +133,6 @@ const App: React.FC = () => {
   }, [image, settings]);
 
   useEffect(() => {
-    // Longer debounce for smoother interaction on heavy filters
     const timer = setTimeout(() => {
       processImage();
     }, 150);
@@ -213,7 +212,7 @@ const App: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-2">Drop it like it's hot</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">Drop Image</h2>
                 <p className="text-slate-500 text-sm max-w-[240px]">Drag and drop your image anywhere or click to browse</p>
               </div>
               <input type="file" className="hidden" accept="image/*" onChange={handleFileUpload} />
@@ -224,7 +223,7 @@ const App: React.FC = () => {
         {isDragging && (
           <div className="fixed inset-0 bg-blue-600/20 backdrop-blur-sm z-50 pointer-events-none flex items-center justify-center">
              <div className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-xl shadow-2xl animate-bounce border border-blue-400">
-                Drop Image to Start
+                Drop to Import
              </div>
           </div>
         )}
